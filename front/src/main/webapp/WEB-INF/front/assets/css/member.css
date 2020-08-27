@@ -9,7 +9,7 @@
     width: 380px;
     height: 480px;
     position: relative;
-    margin: 6% auto;
+    margin: 3% auto;
     background: #fff;
     padding: 5px;
     overflow: hidden;
@@ -45,7 +45,7 @@
     text-align: center;
 }
 .social-icons img {
-    width: 40px ;
+    width: 35px ;
     cursor: pointer;
 }
 .input-group {
@@ -68,7 +68,7 @@
     padding: 10px 30px;
     cursor: pointer;
     display: block;
-    margin: auto;
+    margin: 25px auto;
     background: linear-gradient(to right, #ece6e8, #d9ced2);
     border: 0;
     outline: none;
@@ -89,11 +89,13 @@
 }
 .juso-btn {
 	position: absolute;
-	right: 130px;
+	right: 70px;
 	top: 250px;
 	border: 1px solid #9c9598;
 	border-radius: 10px;
 	color: #6f6f6f;
+	height: 40px;
+	width: 100px;
 }
 #zipCode {
 	width: 100px;
