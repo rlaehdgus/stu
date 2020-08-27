@@ -28,4 +28,21 @@
 			NOW()
 		)
 	</insert>
+	
+	<select id="userInfo" parameterType="com.indiv.front.vo.memberVO" resultType="HashMap">
+		SELECT
+			ID,
+			PASS,
+			NAME,
+			PHONE,
+			BIRTH,
+			ZIPCODE,
+			ADDR,
+			DETAILADDR
+		FROM
+			MEMBER
+		WHERE
+			ID = #{id}
+			AND PASS = #{pass}
+	</select>
 </mapper>
