@@ -5,13 +5,4 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-	<!-- 커넥션풀 DataSource 객체 -->
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/stu?characterEncoding=UTF-8&amp;serverTimezone=UTC;" />
-		<property name="username" value="stu" />
-		<property name="password" value="Stu12356@" />
-	</bean>
-		
 </beans>

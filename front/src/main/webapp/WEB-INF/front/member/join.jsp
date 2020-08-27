@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="frm" uri="http://www.springframework.org/tags/form" %>
 <div class="wrap">
 	<div class="form-wrap">
 		<div class="button-wrap">
@@ -12,21 +13,21 @@
 			<a href="#"><img src="/assets/img/gl.png" alt="google"></a>
 		</div>
 		<form id="login" action="" class="input-group">
-			<input type="text" class="input-field" placeholder="User ID" required>
-			<input type="password" class="input-field" placeholder="Enter Password" required>
+			<input type="text" id="id" class="input-field" placeholder="User ID" required>
+			<input type="password" id="pass" class="input-field" placeholder="Enter Password" required>
 			<input type="checkbox" class="checkbox"><span>Remember Password</span>
 			<button class="submit">Login</button>
 		</form>
-		<form id="register" action="" class="input-group">
-			<input type="text" id="id" class="input-field" placeholder="User ID" required>
-			<input type="password" id="pass" class="input-field" placeholder="Enter Password" required>
-			<input type="text" id="name" class="input-field" placeholder="Your Full name" required>
-			<input type="text" id="phone" class="input-field" placeholder="Your Phone" required>
-			<input type="text" id="birth" class="input-field" placeholder="Your Birth" required>
-			<input type="text" id="zipCode" class="input-field" placeholder="Your Zip Code" required>
+		<form id="register" action="/register" class="input-group" method="POST">
+			<input type="text" id="id" name="id" class="input-field" placeholder="Your ID" required>
+			<input type="password" id="pass" name="pass" class="input-field" placeholder="Your Password" required>
+			<input type="text" id="name" name="name" class="input-field" placeholder="Your Full name" required>
+			<input type="text" id="phone" name="phone" class="input-field" placeholder="Your Phone" required>
+			<input type="text" id="birth" name="birth" class="input-field" placeholder="Your Birth" required>
+			<input type="text" id="zipCode" name="zipCode" class="input-field" placeholder="Your Zip Code" required>
 			<button type="button" class="juso-btn" onclick="DaumPostcode()">우편번호</button>
-			<input type="text" id="addr" class="input-field" placeholder="Your Juso" required>
-			<input type="text" id="defaultAddr" class="input-field" placeholder="Your Detail Addr" required>
+			<input type="text" id="addr" name="addr" class="input-field" placeholder="Your Juso" required>
+			<input type="text" id="detailAddr" name="detailAddr" class="input-field" placeholder="Your Detail Addr" required>
 			<button class="submit">REGISTER</button>
 		</form>
     </div>
@@ -53,7 +54,6 @@ function register(){
 }
 </script>
 <script>
-
 function DaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -97,7 +97,7 @@ function DaumPostcode() {
             document.getElementById('zipCode').value = data.zonecode;
             document.getElementById("addr").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("defaultAddr").focus();
+            document.getElementById("detailAddr").focus();
         }
     }).open();
 }

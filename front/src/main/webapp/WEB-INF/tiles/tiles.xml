@@ -7,18 +7,21 @@
 	<definition name="mainLayout" template="/WEB-INF/front/layout/mainLayout.jsp">
 		<put-attribute name="head" value="/WEB-INF/front/inc/mainHead.jsp" />
 		<put-attribute name="header" value="/WEB-INF/front/inc/mainHeader.jsp" />
+		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/front/inc/mainFooter.jsp" />
 	</definition>
 
 	<definition name="memberLayout" template="/WEB-INF/front/layout/defaultLayout.jsp">
 		<put-attribute name="head" value="/WEB-INF/front/inc/defaultHead.jsp" />
 		<put-attribute name="header" value="/WEB-INF/front/inc/mainHeader.jsp" />
+		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/front/inc/defaultFooter.jsp" />
 	</definition>
 
 	<definition name="boardLayout" template="/WEB-INF/front/layout/defaultLayout.jsp">
 		<put-attribute name="head" value="/WEB-INF/front/inc/defaultHead.jsp" />
 		<put-attribute name="header" value="/WEB-INF/front/inc/mainHeader.jsp" />
+		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/front/inc/defaultFooter.jsp" />
 	</definition>
 	
