@@ -2,7 +2,7 @@
 <div class="wrap">
 	<div class="form-wrap">
 		<div class="button-wrap">
-			<div id="btn"></div>
+			<div id="btn" style="left: -3px;"></div>
 			<button type="button" class="togglebtn" onclick="login()">LOG IN</button>
 			<button type="button" class="togglebtn" onclick="register()">REGISTER</button>
 		</div>
@@ -39,7 +39,7 @@ var z = document.getElementById("btn");
 function login(){
     x.style.left = "50px";
     y.style.left = "450px";
-    z.style.left = "0";
+    z.style.left = "-3px";
     
     $(".form-wrap").css("height", "480px");
 }
@@ -47,7 +47,7 @@ function login(){
 function register(){
     x.style.left = "-400px";
     y.style.left = "50px";
-    z.style.left = "110px";
+    z.style.left = "113px";
     
     $(".form-wrap").css("height", "650px");
 }
