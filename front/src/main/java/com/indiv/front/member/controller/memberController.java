@@ -1,5 +1,6 @@
 package com.indiv.front.member.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.indiv.front.member.service.memberService;
 import com.indiv.front.vo.memberVO;
@@ -35,52 +37,33 @@ public class memberController {
 	/**
 	 * 회원가입 Proc
 	 * @param memberVO
-	 * @param request
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(memberVO memberVO) throws Exception {
+	public ModelAndView register(memberVO memberVO, HttpServletRequest request) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
-		// 값 체크
-		if(memberVO != null) {
-			memberService.register(memberVO);
-		}
+		resultMap = memberService.register(request, memberVO);
 		
-		return "redirect: /login";
+		return new ModelAndView("jsonView", resultMap);
 	}
 	
 	/**
 	 * 로그인 Proc
 	 * @param memberVO
 	 * @param session
+	 * @param request
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/loginChk", method=RequestMethod.POST)
-	public String loginChk(memberVO memberVO, HttpSession session) throws Exception {
-		Map<String, Object> map = null;
-		String returnUrl = "";
+	public ModelAndView loginChk(memberVO memberVO, HttpSession session, HttpServletRequest request) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
-		// 값 체크
-		if(memberVO != null) {
-			map = memberService.loginChk(memberVO);
-			
-			// 회원 정보 세션 값 삭제처리
-			if(session.getAttribute("member") != null) {
-				session.removeAttribute("member");
-			}
-			
-			// 회원 정보 확인 및 세션 추가
-			if(map != null) {
-				session.setAttribute("member", map);
-				returnUrl = "redirect: /main";
-			} else {
-				returnUrl = "redirect: /login";
-			}
-		}
+		resultMap = memberService.loginChk(request, memberVO);
 		
-		return returnUrl;
+		return new ModelAndView("jsonView", resultMap);
 	}
 	
 	/**
@@ -93,8 +76,8 @@ public class memberController {
 		String returnUrl = "";
 		
 		// 세션 값이 있으면 세션 삭제
-		if(session.getAttribute("member") != null) {
-			session.removeAttribute("member");
+		if(session.getAttribute("sessMember") != null) {
+			session.removeAttribute("sessMember");
 			returnUrl = "redirect: /main";
 		} else {
 			returnUrl = "redirect: /login";

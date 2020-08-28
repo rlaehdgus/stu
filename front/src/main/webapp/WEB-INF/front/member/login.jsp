@@ -12,13 +12,13 @@
 			<a href="#"><img src="/assets/img/kao.png" alt="kakao"></a>
 			<a href="#"><img src="/assets/img/gl.png" alt="google"></a>
 		</div>
-		<form id="login" action="/loginChk" class="input-group" method="POST">
+		<form id="login" class="input-group" method="POST">
 			<input type="text" name="id" class="input-field" placeholder="User ID" required>
 			<input type="password" name="pass" class="input-field" placeholder="Enter Password" required>
 			<input type="checkbox" class="checkbox"><span>Remember Password</span>
-			<button class="submit">Login</button>
+			<button type="button" id="loginBtn" class="submit">Login</button>
 		</form>
-		<form id="register" action="/register" class="input-group" method="POST">
+		<form id="register" class="input-group" method="POST">
 			<input type="text" name="id" class="input-field" placeholder="Your ID" required>
 			<input type="password" name="pass" class="input-field" placeholder="Your Password" required>
 			<input type="text" name="name" class="input-field" placeholder="Your Full name" required>
@@ -28,7 +28,7 @@
 			<button type="button" class="juso-btn" onclick="DaumPostcode()">우편번호</button>
 			<input type="text" id="addr" name="addr" class="input-field" placeholder="Your Juso" required>
 			<input type="text" id="detailAddr" name="detailAddr" class="input-field" placeholder="Your Detail Addr" required>
-			<button class="submit">REGISTER</button>
+			<button type="button" id="registerBtn" class="submit">REGISTER</button>
 		</form>
     </div>
 </div>
@@ -70,6 +70,39 @@ $(function(){
 	}else{
 		y.style.display = "block";
 	}
+	
+	$("#registerBtn").click(function(){
+		$.ajax({
+			url: "/register",
+			type: "POST",
+			data: $("#register").serialize(),
+			success: function(result) {
+				if(data.RESULT == "SUCCESS"){
+					alert(data.MESSAGE);
+					location.href="/login";
+				} else {
+					alert(data.MESSAGE);
+				}
+			}
+		});
+	});
+
+	$("#loginBtn").click(function(){
+		$.ajax({
+			url: "/loginChk",
+			type: "POST",
+			data: $("#login").serialize(),
+			dataType:"json",
+			success: function(data) {
+				if(data.RESULT == "SUCCESS"){
+					alert(data.MESSAGE);
+					location.href="/main";
+				} else {
+					alert(data.MESSAGE);
+				}
+			}
+		});
+	});
 });
 </script>
 <script>
