@@ -26,8 +26,8 @@
 			<input type="text" name="birth" class="input-field" placeholder="Your Birth" required>
 			<input type="text" id="zipCode" name="zipCode" class="input-field" placeholder="Your Zip Code" required>
 			<button type="button" class="juso-btn" onclick="DaumPostcode()">우편번호</button>
-			<input type="text" name="addr" class="input-field" placeholder="Your Juso" required>
-			<input type="text" name="detailAddr" class="input-field" placeholder="Your Detail Addr" required>
+			<input type="text" id="addr" name="addr" class="input-field" placeholder="Your Juso" required>
+			<input type="text" id="detailAddr" name="detailAddr" class="input-field" placeholder="Your Detail Addr" required>
 			<button class="submit">REGISTER</button>
 		</form>
     </div>
@@ -38,20 +38,39 @@ var y = document.getElementById("register");
 var z = document.getElementById("btn");
 
 function login(){
-    x.style.left = "50px";
-    y.style.left = "450px";
+    
+    if(isMobile()){
+    	x.style.display = "block";
+    	y.style.display = "none";
+    }else{
+		x.style.left = "50px";
+		y.style.left = "450px";
+    }
     z.style.left = "-3px";
     
     $(".form-wrap").css("height", "480px");
 }
 
 function register(){
-    x.style.left = "-400px";
-    y.style.left = "50px";
+    if(isMobile()){
+    	x.style.display = "none";
+    	y.style.display = "block";
+    }else{
+		x.style.left = "-400px";
+		y.style.left = "50px";
+    }
     z.style.left = "113px";
     
     $(".form-wrap").css("height", "650px");
 }
+
+$(function(){
+	if(isMobile()){
+		y.style.display = "none";
+	}else{
+		y.style.display = "block";
+	}
+});
 </script>
 <script>
 function DaumPostcode() {
@@ -100,5 +119,17 @@ function DaumPostcode() {
             document.getElementById("detailAddr").focus();
         }
     }).open();
+}
+</script>
+<script>
+// 디바이스 여부 체크
+function isMobile(){
+	var UserAgent = navigator.userAgent;
+	
+	if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+		return true;
+    }else{
+		return false;
+    }
 }
 </script>

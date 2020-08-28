@@ -96,7 +96,7 @@ a {
   color: #fff;
   text-shadow: 0px 1px 0px #000;
 }
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   #cssmenu > ul {
     width: 100%;
   }
@@ -139,7 +139,7 @@ a {
   }
 }
 /* Make sure they show even if hidden in mobile view by JS */
-@media (min-width: 769px) {
+@media (min-width: 400px) {
   #cssmenu > ul > li.collapsed {
     display: inline-block !important;
     *display: inline;
