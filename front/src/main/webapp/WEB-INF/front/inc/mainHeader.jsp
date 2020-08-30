@@ -4,7 +4,7 @@
 <div id="header-sty">
 	<c:if test="${sessMember.ID eq null}"><a href="/login">로그인</a></c:if>
 	<c:if test="${sessMember.ID ne null}">
-		<a href="/mypage">마이페이지</a>
+		<a href="/mypage/info">마이페이지</a>
 		<a href="/logout">로그아웃</a>
 	</c:if>
 </div>

@@ -57,7 +57,7 @@ function register(){
     	y.style.display = "block";
     }else{
 		x.style.left = "-400px";
-		y.style.left = "50px";
+		y.style.left = "55px";
     }
     z.style.left = "113px";
     
@@ -76,7 +76,7 @@ $(function(){
 			url: "/register",
 			type: "POST",
 			data: $("#register").serialize(),
-			success: function(result) {
+			success: function(data) {
 				if(data.RESULT == "SUCCESS"){
 					alert(data.MESSAGE);
 					location.href="/login";

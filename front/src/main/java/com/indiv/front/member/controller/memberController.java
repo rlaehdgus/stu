@@ -78,9 +78,11 @@ public class memberController {
 		// 세션 값이 있으면 세션 삭제
 		if(session.getAttribute("sessMember") != null) {
 			session.removeAttribute("sessMember");
+			session.removeAttribute("passCnt");
+			
 			returnUrl = "redirect: /main";
 		} else {
-			returnUrl = "redirect: /login";
+			returnUrl = "redirect: /main";
 		}
 		
 		return returnUrl;

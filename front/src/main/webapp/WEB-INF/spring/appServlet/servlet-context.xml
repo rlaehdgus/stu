@@ -61,4 +61,11 @@
 	
 	<context:component-scan base-package="com.indiv.*" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/mypage/**"/>
+			<beans:bean class="com.indiv.front.util.Interceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
